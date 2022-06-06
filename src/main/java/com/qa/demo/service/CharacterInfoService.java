@@ -12,11 +12,11 @@ public class CharacterInfoService {
 	
 	private CharacterInfoRepo repo;
 	
-	//private ModelMapper mapper;
+	private ModelMapper mapper;
 	
 	public CharacterInfoService(CharacterInfoRepo repo, ModelMapper mapper) {
 		this.repo = repo;
-		//this.mapper = mapper;
+		this.mapper = mapper;
 	}
 	
 	//create

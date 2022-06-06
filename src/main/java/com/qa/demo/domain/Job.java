@@ -33,14 +33,5 @@ public class Job {
 		this.character = character;
 	}
 
-	public Job(Long id, String jobName, int jobLevel) {
-		super();
-		Id = id;
-		this.jobName = jobName;
-		this.jobLevel = jobLevel;
-	}
-
-	
-
 
 }
