@@ -1,8 +1,11 @@
 package com.qa.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +29,10 @@ public class JobController {
 	@PostMapping("/create")
 	public ResponseEntity<Job> create(@RequestBody Job job) {
 		return new ResponseEntity<Job>(this.service.jobCreate(job), HttpStatus.CREATED);
+	}
+	//read 200
+	@GetMapping("/readAll")
+	public ResponseEntity<List<Job>> readAll() {
+		return new ResponseEntity<List<Job>>(this.service.readAll(), HttpStatus.OK);
 	}
 }

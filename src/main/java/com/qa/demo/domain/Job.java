@@ -32,6 +32,10 @@ public class Job {
 		this.jobLevel = jobLevel;
 		this.character = character;
 	}
+	
+	public Job() {
+		
+	}
 
 
 }

@@ -1,8 +1,12 @@
 package com.qa.demo.controllertests;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qa.demo.domain.Job;
 import com.qa.demo.domain.Job;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -45,6 +50,19 @@ public class JobControllerTests {
 		ResultMatcher checkContent = content().json(savedJobAsJson);
 		
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkContent); 
+	}
+	
+	@Test
+	void testReadAll() throws Exception {
+		final Job test = new Job(1L, "Bard", 90, null);
+		String testJobAsJson = this.mapper.writeValueAsString(List.of(test));
+		
+		RequestBuilder requestGet = get("/job/readAll"); 
+	
+		ResultMatcher checkStatusGet = status().isOk();
+		ResultMatcher checkContentGet = content().json(testJobAsJson);
+		
+		this.mvc.perform(requestGet).andExpect(checkStatusGet).andExpect(checkContentGet); 
 	}
 
 }
