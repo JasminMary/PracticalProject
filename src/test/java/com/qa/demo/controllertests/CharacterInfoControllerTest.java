@@ -67,7 +67,7 @@ public class CharacterInfoControllerTest {
 	}
 	
 	@Test
-	void testGetCinemaById() throws Exception {
+	void testReadById() throws Exception {
 		List<Job> jobs = new ArrayList<>();
 		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
 		String savedCharacterInfoAsJSON = this.mapper.writeValueAsString(character);

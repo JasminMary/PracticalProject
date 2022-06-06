@@ -58,9 +58,9 @@ public class CharacterInfoServiceTests {
 	}
 	
 	@Test
-	void testGetById() throws CharacterInfoException {
+	void testReadById() throws CharacterInfoException {
 		final Long id = 1L;
-		final CharacterInfo character = new CharacterInfo();
+		final CharacterInfo character = new CharacterInfo(1L, "hyur", "Twin adder", "guild", "light", null);
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(character));
 
 		assertThat(this.service.read(id)).isEqualTo(character);
