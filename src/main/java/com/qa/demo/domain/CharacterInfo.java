@@ -39,7 +39,6 @@ public class CharacterInfo {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Job> jobs = new ArrayList<>();
 
-	//constructor for testing
 	public CharacterInfo(Long id, String race, String grandCompany, String freeCompany, String datacentre,
 			List<Job> jobs) {
 		super();
@@ -50,6 +49,12 @@ public class CharacterInfo {
 		this.datacentre = datacentre;
 		this.jobs = jobs;
 	}
+	public CharacterInfo() {
+		
+	}
+	
+	
+	
 
 
 

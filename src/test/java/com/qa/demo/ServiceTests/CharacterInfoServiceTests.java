@@ -1,5 +1,6 @@
 package com.qa.demo.ServiceTests;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -40,6 +41,18 @@ public class CharacterInfoServiceTests {
 		assertEquals(chara, this.service.characterCreate(chara));
 		
 		Mockito.verify(this.repo, Mockito.times(1)).save(chara);
+	}
+	
+	@Test
+	void readAlltest () {
+		final List<CharacterInfo> characterInfo = List.of(new CharacterInfo(1L, "hyur", "Twin adder", "guild", "light", null),
+				new CharacterInfo(2L, "Elezen", "twin adder", "another", "chaos", null));
+
+		Mockito.when(this.repo.findAll()).thenReturn(characterInfo);
+
+		assertThat(this.service.readAll()).isEqualTo(characterInfo);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 	
 

@@ -1,8 +1,11 @@
 package com.qa.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +29,12 @@ public class CharacterInfoController {
 	@PostMapping("/create")
 	public ResponseEntity<CharacterInfo> create(@RequestBody CharacterInfo character) {
 		return new ResponseEntity<CharacterInfo>(this.service.characterCreate(character), HttpStatus.CREATED);
+	}
+	
+	//read 200
+	@GetMapping("/readAll")
+	public ResponseEntity<List<CharacterInfo>> readAll() {
+		return new ResponseEntity<List<CharacterInfo>>(this.service.readAll(), HttpStatus.OK);
+		
 	}
 }

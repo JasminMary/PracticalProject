@@ -1,4 +1,5 @@
 package com.qa.demo.controllertests;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -49,6 +50,20 @@ public class CharacterInfoControllerTest {
 		ResultMatcher checkContent = content().json(savedCharacterInfoAsJson);
 		
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkContent); 
+	}
+	
+	@Test
+	void testReadAll() throws Exception {
+		List<Job> jobs = new ArrayList<>();
+		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		String testCharacterInfoAsJson = this.mapper.writeValueAsString(List.of(character));
+		
+		RequestBuilder requestGet = get("/character/readAll"); 
+	
+		ResultMatcher checkStatusGet = status().isOk();
+		ResultMatcher checkContentGet = content().json(testCharacterInfoAsJson);
+		
+		this.mvc.perform(requestGet).andExpect(checkStatusGet).andExpect(checkContentGet); 
 	}
 
 }
