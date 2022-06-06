@@ -65,5 +65,19 @@ public class CharacterInfoControllerTest {
 		
 		this.mvc.perform(requestGet).andExpect(checkStatusGet).andExpect(checkContentGet); 
 	}
+	
+	@Test
+	void testGetCinemaById() throws Exception {
+		List<Job> jobs = new ArrayList<>();
+		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		String savedCharacterInfoAsJSON = this.mapper.writeValueAsString(character);
+
+		RequestBuilder request = get("/character/read/1");
+
+		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkContent = content().json(savedCharacterInfoAsJSON);
+
+		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkContent);
+	}
 
 }

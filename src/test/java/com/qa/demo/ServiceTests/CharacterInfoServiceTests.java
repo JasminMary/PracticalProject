@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,6 +18,7 @@ import com.qa.demo.repo.CharacterInfoRepo;
 import com.qa.demo.service.CharacterInfoService;
 import com.qa.demo.domain.CharacterInfo;
 import com.qa.demo.domain.Job;
+import com.qa.demo.exceptions.CharacterInfoException;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CharacterInfoServiceTests {
@@ -55,5 +57,15 @@ public class CharacterInfoServiceTests {
 		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 	
+	@Test
+	void testGetById() throws CharacterInfoException {
+		final Long id = 1L;
+		final CharacterInfo character = new CharacterInfo();
+		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(character));
+
+		assertThat(this.service.read(id)).isEqualTo(character);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+	}
 
 }

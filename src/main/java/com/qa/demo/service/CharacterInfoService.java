@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.demo.domain.CharacterInfo;
-import com.qa.demo.dto.CharacterInfoDTO;
+import com.qa.demo.exceptions.CharacterInfoException;
 import com.qa.demo.repo.CharacterInfoRepo;
 
 @Service
@@ -32,6 +32,10 @@ public class CharacterInfoService {
 	public List<CharacterInfo> readAll() {
 		return this.repo.findAll();
 	}
+	
+    public CharacterInfo read(Long id) throws CharacterInfoException {
+    	return this.repo.findById(id).orElseThrow(CharacterInfoException::new);
+    }
 	
 	
 	//mapping
