@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "character_information")
 public class CharacterInfo {
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -34,10 +35,22 @@ public class CharacterInfo {
 	
 	private String datacentre;
 	
-	@OneToMany(mappedBy = "jobs")
+	@OneToMany(mappedBy = "Id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Job> jobs = new ArrayList<>();
-	
-	
+
+	//constructor for testing
+	public CharacterInfo(Long id, String race, String grandCompany, String freeCompany, String datacentre,
+			List<Job> jobs) {
+		super();
+		this.id = id;
+		this.race = race;
+		this.grandCompany = grandCompany;
+		this.freeCompany = freeCompany;
+		this.datacentre = datacentre;
+		this.jobs = jobs;
+	}
+
+
 
 }

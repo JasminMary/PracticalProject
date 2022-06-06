@@ -23,6 +23,24 @@ public class Job {
 	private int jobLevel;
 	
 	@ManyToOne(targetEntity = CharacterInfo.class)
-	private Job jobs;
+	private CharacterInfo character;
+
+	public Job(Long id, String jobName, int jobLevel, CharacterInfo character) {
+		super();
+		Id = id;
+		this.jobName = jobName;
+		this.jobLevel = jobLevel;
+		this.character = character;
+	}
+
+	public Job(Long id, String jobName, int jobLevel) {
+		super();
+		Id = id;
+		this.jobName = jobName;
+		this.jobLevel = jobLevel;
+	}
+
+	
+
 
 }
