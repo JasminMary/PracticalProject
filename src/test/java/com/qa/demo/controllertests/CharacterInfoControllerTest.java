@@ -94,7 +94,6 @@ public class CharacterInfoControllerTest {
 		final CharacterInfo updatedChar = new CharacterInfo(1L, "Elezen", "twin adder", "name", "chaos", jobs);
 		String updatedCharAsJson = this.mapper.writeValueAsString(updatedChar);
 		
-		
 		RequestBuilder requestput = put("/character/update/1").contentType(MediaType.APPLICATION_JSON).content(updatedCharAsJson);
 		
 		ResultMatcher checkStatusPut = status().isAccepted();

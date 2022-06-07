@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class JobController {
 	public ResponseEntity<List<Job>> readAll() {
 		return new ResponseEntity<List<Job>>(this.service.readAll(), HttpStatus.OK);
 	}
-	
+	//read by id 200
 	@GetMapping("/read/{id}")
 	public ResponseEntity<Job> read(@PathVariable Long id) throws JobException {
 		return new ResponseEntity<Job>(this.service.read(id), HttpStatus.OK);
@@ -49,4 +50,11 @@ public class JobController {
 	public ResponseEntity<Job> update(@PathVariable Long id, @RequestBody Job job) throws JobException {
 		return new ResponseEntity<Job>(this.service.updateJob(id, job), HttpStatus.ACCEPTED);
 	}
+	//delete 204
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+		return this.service.deleteJob(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
 }

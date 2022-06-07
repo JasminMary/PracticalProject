@@ -25,11 +25,11 @@ public class JobService {
 	public List<Job> readAll() {
 		return this.repo.findAll();
 	}
-	
+	//read by id
     public Job read(Long id) throws JobException {
     	return this.repo.findById(id).orElseThrow(JobException::new);
     }
-    
+    //update
     public Job updateJob(Long id, Job job) throws JobException {
     	Job existing = this.repo.findById(id).orElseThrow(JobException :: new);
     	
@@ -38,6 +38,13 @@ public class JobService {
     	existing.setCharacter(job.getCharacter());
     	
     	return this.repo.saveAndFlush(existing);	
+    }
+    
+    //delete
+    public boolean deleteJob(Long id) {
+        this.repo.deleteById(id);
+        boolean exists = this.repo.existsById(id);
+        return !exists;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.qa.demo.controllertests;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -91,6 +92,10 @@ public class JobControllerTests {
 		
 		this.mvc.perform(requestput).andExpect(checkStatusPut).andExpect(checkContentPut); 
 } 
+	@Test
+	void testDelete() throws Exception {
+		this.mvc.perform(delete("/job/delete/1")).andExpect(status().isNoContent());
+	}
 
 	
 
