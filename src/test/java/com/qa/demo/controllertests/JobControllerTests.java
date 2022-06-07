@@ -1,5 +1,6 @@
 package com.qa.demo.controllertests;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -23,8 +24,6 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.demo.domain.Job;
-import com.qa.demo.domain.Job;
-
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc // sets up the MockMVC object
@@ -93,6 +92,10 @@ public class JobControllerTests {
 		
 		this.mvc.perform(requestput).andExpect(checkStatusPut).andExpect(checkContentPut); 
 } 
+	@Test
+	void testDelete() throws Exception {
+		this.mvc.perform(delete("/job/delete/1")).andExpect(status().isNoContent());
+	}
 
 	
 

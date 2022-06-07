@@ -81,6 +81,16 @@ public class JobServiceTest {
 		Mockito.verify(this.repo, Mockito.times(1)).save(newJob);
 	}
 	
+	@Test
+	void testDelete() {
+		final Long id = 1L;
+
+		Mockito.when(this.repo.existsById(id)).thenReturn(false);
+
+		assertThat(this.service.deleteJob(id)).isEqualTo(true);
+
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
+	}
 
 
 }

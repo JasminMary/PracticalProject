@@ -1,4 +1,5 @@
 package com.qa.demo.controllertests;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -93,13 +94,17 @@ public class CharacterInfoControllerTest {
 		final CharacterInfo updatedChar = new CharacterInfo(1L, "Elezen", "twin adder", "name", "chaos", jobs);
 		String updatedCharAsJson = this.mapper.writeValueAsString(updatedChar);
 		
-		
 		RequestBuilder requestput = put("/character/update/1").contentType(MediaType.APPLICATION_JSON).content(updatedCharAsJson);
 		
 		ResultMatcher checkStatusPut = status().isAccepted();
 		ResultMatcher checkContentPut = content().json(updatedCharAsJson);
 		
 		this.mvc.perform(requestput).andExpect(checkStatusPut).andExpect(checkContentPut); 
-} 
+	}
+	
+	@Test
+	void testDelete() throws Exception {
+		this.mvc.perform(delete("/character/delete/1")).andExpect(status().isNoContent());
+	}
 
 }
