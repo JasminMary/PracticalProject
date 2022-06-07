@@ -37,5 +37,38 @@ public class Job {
 		
 	}
 
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getJobName() {
+		return jobName;
+	}
+
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+
+	public int getJobLevel() {
+		return jobLevel;
+	}
+
+	public void setJobLevel(int jobLevel) {
+		this.jobLevel = jobLevel;
+	}
+
+	public CharacterInfo getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(CharacterInfo character) {
+		this.character = character;
+	}
+	
+
 
 }

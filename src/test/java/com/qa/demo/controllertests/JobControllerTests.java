@@ -2,6 +2,7 @@ package com.qa.demo.controllertests;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -79,6 +80,21 @@ public class JobControllerTests {
 
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkContent);
 	}
+	
+	@Test
+	void testUpdate() throws Exception {
+		final Job updatedJob = new Job(1L, "Bard", 90, null);
+		String updatedJobAsJson = this.mapper.writeValueAsString(updatedJob);
+			
+		RequestBuilder requestput = put("/job/update/1").contentType(MediaType.APPLICATION_JSON).content(updatedJobAsJson);
+		
+		ResultMatcher checkStatusPut = status().isAccepted();
+		ResultMatcher checkContentPut = content().json(updatedJobAsJson);
+		
+		this.mvc.perform(requestput).andExpect(checkStatusPut).andExpect(checkContentPut); 
+} 
+
+	
 
 
 }

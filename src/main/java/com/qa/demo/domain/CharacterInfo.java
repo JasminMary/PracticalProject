@@ -35,6 +35,7 @@ public class CharacterInfo {
 	
 	private String datacentre;
 	
+
 	@OneToMany(mappedBy = "Id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Job> jobs = new ArrayList<>();
@@ -49,8 +50,52 @@ public class CharacterInfo {
 		this.datacentre = datacentre;
 		this.jobs = jobs;
 	}
+	
 	public CharacterInfo() {
 		
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getRace() {
+		return race;
+	}
+	public void setRace(String race) {
+		this.race = race;
+	}
+	public String getGrandCompany() {
+		return grandCompany;
+	}
+	public void setGrandCompany(String grandCompany) {
+		this.grandCompany = grandCompany;
+	}
+	public String getFreeCompany() {
+		return freeCompany;
+	}
+	public void setFreeCompany(String freeCompany) {
+		this.freeCompany = freeCompany;
+	}
+	public String getDatacentre() {
+		return datacentre;
+	}
+	public void setDatacentre(String datacentre) {
+		this.datacentre = datacentre;
+	}
+	public List<Job> getJobs() {
+		return jobs;
+	}
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
+	}
+
+	@Override
+	public String toString() {
+		return "CharacterInfo [id=" + id + ", race=" + race + ", grandCompany=" + grandCompany + ", freeCompany="
+				+ freeCompany + ", datacentre=" + datacentre + ", jobs=" + jobs + "]";
 	}
 	
 	

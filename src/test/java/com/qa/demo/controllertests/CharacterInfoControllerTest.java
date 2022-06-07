@@ -1,6 +1,7 @@
 package com.qa.demo.controllertests;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,11 +38,11 @@ public class CharacterInfoControllerTest {
 	
 	@Test
 	void testCreate() throws Exception {
-		List<Job> jobs = new ArrayList<>();
-		final CharacterInfo CharacterInfo = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		//List<Job> jobs = new ArrayList<>();
+		final CharacterInfo CharacterInfo = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", null);
 		String testCharacterInfoAsJson = this.mapper.writeValueAsString(CharacterInfo);
 		
-		final CharacterInfo savedCharacterInfo = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		final CharacterInfo savedCharacterInfo = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", null);
 		String savedCharacterInfoAsJson = this.mapper.writeValueAsString(savedCharacterInfo); 
 		
 		RequestBuilder request = post("/character/create").contentType(MediaType.APPLICATION_JSON).content(testCharacterInfoAsJson);
@@ -55,7 +56,9 @@ public class CharacterInfoControllerTest {
 	@Test
 	void testReadAll() throws Exception {
 		List<Job> jobs = new ArrayList<>();
-		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		Job test = new Job(1L, "Bard", 90, null);
+		jobs.add(test);
+		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "guild", "chaos", jobs);
 		String testCharacterInfoAsJson = this.mapper.writeValueAsString(List.of(character));
 		
 		RequestBuilder requestGet = get("/character/readAll"); 
@@ -69,7 +72,9 @@ public class CharacterInfoControllerTest {
 	@Test
 	void testReadById() throws Exception {
 		List<Job> jobs = new ArrayList<>();
-		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		Job test = new Job(1L, "Bard", 90, null);
+		jobs.add(test);
+		final CharacterInfo character = new CharacterInfo(1L, "hyur", "twin adder", "guild", "chaos", jobs);
 		String savedCharacterInfoAsJSON = this.mapper.writeValueAsString(character);
 
 		RequestBuilder request = get("/character/read/1");
@@ -79,5 +84,22 @@ public class CharacterInfoControllerTest {
 
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkContent);
 	}
+	
+	@Test
+	void testUpdate() throws Exception {
+		List<Job> jobs = new ArrayList<>();
+		Job test = new Job(1L, "Bard", 90, null);
+		jobs.add(test);
+		final CharacterInfo updatedChar = new CharacterInfo(1L, "Elezen", "twin adder", "name", "chaos", jobs);
+		String updatedCharAsJson = this.mapper.writeValueAsString(updatedChar);
+		
+		
+		RequestBuilder requestput = put("/character/update/1").contentType(MediaType.APPLICATION_JSON).content(updatedCharAsJson);
+		
+		ResultMatcher checkStatusPut = status().isAccepted();
+		ResultMatcher checkContentPut = content().json(updatedCharAsJson);
+		
+		this.mvc.perform(requestput).andExpect(checkStatusPut).andExpect(checkContentPut); 
+} 
 
 }
