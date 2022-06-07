@@ -33,11 +33,12 @@ public class CharacterInfoService {
 	public List<CharacterInfo> readAll() {
 		return this.repo.findAll();
 	}
-	
+	//read by id
     public CharacterInfo read(Long id) throws CharacterInfoException {
     	return this.repo.findById(id).orElseThrow(CharacterInfoException::new);
     }
     
+    //update
     public CharacterInfo updateCharacterInfo(Long id, CharacterInfo character) throws CharacterInfoException {
     	//Optional<CharacterInfo> existingOptional = this.repo.findById(id);
     	CharacterInfo existing =  this.repo.findById(id).orElseThrow(CharacterInfoException::new);
@@ -49,6 +50,14 @@ public class CharacterInfoService {
     	
     	return this.repo.saveAndFlush(existing);
     }
+    
+    //delete
+    public boolean deleteCharacterInfo(Long id) {
+        this.repo.deleteById(id);
+        boolean exists = this.repo.existsById(id);
+        return !exists;
+    }
+    
 	
 	
 	//mapping
