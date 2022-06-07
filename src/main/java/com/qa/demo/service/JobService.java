@@ -29,5 +29,15 @@ public class JobService {
     public Job read(Long id) throws JobException {
     	return this.repo.findById(id).orElseThrow(JobException::new);
     }
+    
+    public Job updateJob(Long id, Job job) throws JobException {
+    	Job existing = this.repo.findById(id).orElseThrow(JobException :: new);
+    	
+    	existing.setJobLevel(job.getJobLevel());
+    	existing.setJobName(job.getJobName());
+    	existing.setCharacter(job.getCharacter());
+    	
+    	return this.repo.saveAndFlush(existing);	
+    }
 
 }

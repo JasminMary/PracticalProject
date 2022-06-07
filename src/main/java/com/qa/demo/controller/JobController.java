@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,5 +42,11 @@ public class JobController {
 	@GetMapping("/read/{id}")
 	public ResponseEntity<Job> read(@PathVariable Long id) throws JobException {
 		return new ResponseEntity<Job>(this.service.read(id), HttpStatus.OK);
+	}
+	
+	//update 202
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Job> update(@PathVariable Long id, @RequestBody Job job) throws JobException {
+		return new ResponseEntity<Job>(this.service.updateJob(id, job), HttpStatus.ACCEPTED);
 	}
 }
