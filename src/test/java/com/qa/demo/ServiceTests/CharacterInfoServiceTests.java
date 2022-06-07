@@ -67,5 +67,21 @@ public class CharacterInfoServiceTests {
 
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
 	}
+	
+	@Test
+	void testUpdateCharacterInfo() throws CharacterInfoException { 
+		final Long id = 1L;
+
+		CharacterInfo oldChar = new CharacterInfo(id, "hyur", "Twin adder", "guild", "light", null);
+		CharacterInfo newChar = new CharacterInfo(id, "Elezen", "Twin adder", "guild", "light", null);
+
+		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(oldChar));
+		Mockito.when(this.repo.save(newChar)).thenReturn(newChar);
+
+		assertEquals(newChar, this.service.updateCharacterInfo(oldChar.getId(), newChar));
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+		Mockito.verify(this.repo, Mockito.times(1)).save(newChar);
+	}
 
 }

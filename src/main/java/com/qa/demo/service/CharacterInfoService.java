@@ -1,6 +1,7 @@
 package com.qa.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,18 @@ public class CharacterInfoService {
 	
     public CharacterInfo read(Long id) throws CharacterInfoException {
     	return this.repo.findById(id).orElseThrow(CharacterInfoException::new);
+    }
+    
+    public CharacterInfo updateCharacterInfo(Long id, CharacterInfo character) throws CharacterInfoException {
+    	//Optional<CharacterInfo> existingOptional = this.repo.findById(id);
+    	CharacterInfo existing =  this.repo.findById(id).orElseThrow(CharacterInfoException::new);
+    	
+    	existing.setDatacentre(character.getDatacentre());
+    	existing.setFreeCompany(character.getFreeCompany());
+    	existing.setGrandCompany(character.getGrandCompany());
+    	existing.setRace(character.getRace());
+    	
+    	return this.repo.saveAndFlush(existing);
     }
 	
 	
