@@ -13,12 +13,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name = "character_information")
 public class CharacterInfo {
 	
@@ -26,6 +26,8 @@ public class CharacterInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	private String name;
 	
 	private String race;
 	
@@ -35,15 +37,16 @@ public class CharacterInfo {
 	
 	private String datacentre;
 	
-
-	@OneToMany(mappedBy = "Id")
+	@JsonIgnore
+	@OneToMany(mappedBy = "character")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Job> jobs = new ArrayList<>();
 
-	public CharacterInfo(Long id, String race, String grandCompany, String freeCompany, String datacentre,
+	public CharacterInfo(Long id, String name, String race, String grandCompany, String freeCompany, String datacentre,
 			List<Job> jobs) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.race = race;
 		this.grandCompany = grandCompany;
 		this.freeCompany = freeCompany;
@@ -55,6 +58,14 @@ public class CharacterInfo {
 		
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -94,9 +105,11 @@ public class CharacterInfo {
 
 	@Override
 	public String toString() {
-		return "CharacterInfo [id=" + id + ", race=" + race + ", grandCompany=" + grandCompany + ", freeCompany="
-				+ freeCompany + ", datacentre=" + datacentre + ", jobs=" + jobs + "]";
+		return "CharacterInfo [id=" + id + ", name=" + name + ", race=" + race + ", grandCompany=" + grandCompany
+				+ ", freeCompany=" + freeCompany + ", datacentre=" + datacentre + ", jobs=" + jobs + "]";
 	}
+
+
 	
 	
 	

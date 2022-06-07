@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 public class PracticalProjectApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(PracticalProjectApplication.class, args);
+		SpringApplication.run(PracticalProjectApplication.class, args);
 	}
 
 }

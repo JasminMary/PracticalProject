@@ -34,7 +34,7 @@ public class CharacterInfoServiceTests {
 	void createTest() {
 		List<Job> jobs = new ArrayList<>();
 		
-		CharacterInfo chara = new CharacterInfo(1L, "hyur", "twin adder", "name", "chaos", jobs);
+		CharacterInfo chara = new CharacterInfo(1L,"name" , "hyur", "twin adder", "name", "chaos", jobs);
 		Job test = new Job(1L, "Bard", 90, null);
 		jobs.add(test);
 		
@@ -47,8 +47,8 @@ public class CharacterInfoServiceTests {
 	
 	@Test
 	void readAlltest () {
-		final List<CharacterInfo> characterInfo = List.of(new CharacterInfo(1L, "hyur", "Twin adder", "guild", "light", null),
-				new CharacterInfo(2L, "Elezen", "twin adder", "another", "chaos", null));
+		final List<CharacterInfo> characterInfo = List.of(new CharacterInfo(1L, "name", "hyur", "Twin adder", "guild", "light", null),
+				new CharacterInfo(2L, "name", "Elezen", "twin adder", "another", "chaos", null));
 
 		Mockito.when(this.repo.findAll()).thenReturn(characterInfo);
 
@@ -60,7 +60,7 @@ public class CharacterInfoServiceTests {
 	@Test
 	void testReadById() throws CharacterInfoException {
 		final Long id = 1L;
-		final CharacterInfo character = new CharacterInfo(1L, "hyur", "Twin adder", "guild", "light", null);
+		final CharacterInfo character = new CharacterInfo(1L, "name", "hyur", "Twin adder", "guild", "light", null);
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(character));
 
 		assertThat(this.service.read(id)).isEqualTo(character);
@@ -72,13 +72,14 @@ public class CharacterInfoServiceTests {
 	void testUpdateCharacterInfo() throws CharacterInfoException { 
 		final Long id = 1L;
 
-		CharacterInfo oldChar = new CharacterInfo(id, "hyur", "Twin adder", "guild", "light", null);
-		CharacterInfo newChar = new CharacterInfo(id, "Elezen", "Twin adder", "guild", "light", null);
+		CharacterInfo oldChar = new CharacterInfo(id, "name", "hyur", "Twin adder", "guild", "light", null);
+		CharacterInfo newChar = new CharacterInfo(id, "name", "Elezen", "Twin adder", "guild", "light", null);
 
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(oldChar));
 		Mockito.when(this.repo.save(newChar)).thenReturn(newChar);
 
-		assertEquals(newChar, this.service.updateCharacterInfo(oldChar.getId(), newChar));
+		//assertEquals(this.service.updateCharacterInfo(oldChar.getId(), newChar), newChar);
+		assertThat(this.service.updateCharacterInfo(oldChar.getId(), newChar).equals(newChar));
 
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
 		Mockito.verify(this.repo, Mockito.times(1)).save(newChar);
@@ -90,7 +91,7 @@ public class CharacterInfoServiceTests {
 
 		Mockito.when(this.repo.existsById(id)).thenReturn(false);
 
-		assertThat(this.service.deleteCharacterInfo(id)).isEqualTo(true);
+		assertThat(this.service.deleteCharacterInfo(id)).isTrue();
 
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 	}

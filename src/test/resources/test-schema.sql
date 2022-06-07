@@ -3,6 +3,7 @@ drop table if exists job CASCADE;
 
 create table character_information (
 	id integer auto_increment NOT NULL,
+	name varchar(255),
 	race varchar(255), 
 	grand_company varchar(255),
 	free_company varchar(255),  

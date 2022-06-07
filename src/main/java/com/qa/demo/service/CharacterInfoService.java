@@ -1,9 +1,7 @@
 package com.qa.demo.service;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +14,10 @@ public class CharacterInfoService {
 	
 	private CharacterInfoRepo repo;
 	
-	private ModelMapper mapper;
 	
 	@Autowired
-	public CharacterInfoService(CharacterInfoRepo repo, ModelMapper mapper) {
+	public CharacterInfoService(CharacterInfoRepo repo) {
 		this.repo = repo;
-		this.mapper = mapper;
 	}
 	
 	//create
@@ -40,15 +36,16 @@ public class CharacterInfoService {
     
     //update
     public CharacterInfo updateCharacterInfo(Long id, CharacterInfo character) throws CharacterInfoException {
-    	//Optional<CharacterInfo> existingOptional = this.repo.findById(id);
     	CharacterInfo existing =  this.repo.findById(id).orElseThrow(CharacterInfoException::new);
     	
     	existing.setDatacentre(character.getDatacentre());
     	existing.setFreeCompany(character.getFreeCompany());
     	existing.setGrandCompany(character.getGrandCompany());
     	existing.setRace(character.getRace());
+    	existing.setName(character.getName());
     	
-    	return this.repo.saveAndFlush(existing);
+    	this.repo.saveAndFlush(existing);
+    	return existing;
     }
     
     //delete
@@ -60,8 +57,4 @@ public class CharacterInfoService {
     
 	
 	
-	//mapping
-//	private CharacterInfoDTO mapToDTO(CharacterInfo character) {
-//		return this.mapper.map(character, CharacterInfoDTO.class);
-//	}
 }
