@@ -14,9 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.qa.demo.domain.Job;
-import com.qa.demo.domain.Job;
 import com.qa.demo.exceptions.JobException;
-import com.qa.demo.domain.Job;
 import com.qa.demo.repo.JobRepo;
 import com.qa.demo.service.JobService;
 
@@ -87,7 +85,7 @@ public class JobServiceTest {
 
 		Mockito.when(this.repo.existsById(id)).thenReturn(false);
 
-		assertThat(this.service.deleteJob(id)).isEqualTo(true);
+		assertThat(this.service.deleteJob(id)).isTrue();
 
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 	}

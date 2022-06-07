@@ -1,9 +1,9 @@
 insert into job
-		(job_name, job_level)
+		(id, job_name, job_level)
 			values
-		('Bard', 90);
+		(1, 'Bard', 90);
 
 insert into character_information 
-		(race, grand_company, free_company, datacentre)
+		(id, name, race,  grand_company, free_company, datacentre)
 			values
-		('hyur', 'twin adder', 'guild', 'chaos');
+		(1, 'name', 'hyur', 'twin adder', 'guild', 'chaos');
