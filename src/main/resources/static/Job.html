@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./job.css">
+    <title>Final Fantasy XVI Job Page</title>
+</head>
+<body>
+    <h1>Final Fantasy XVI Job Page</h1>
+    <br>
+    <h2>Create a Job</h2>
+    <form>
+            <label for="createId" class="form-label">Job id:</label>
+            <input type="number" class="form-control" id="createId" placeholder="123..."> 
+        <br>
+            <label for="jobName" class="form-label">Select Job:</label>
+            <select name="Job-name" class="form-select" id ="jobName" aria-label="Default select example">
+                <option selected>Select job...</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Warrior">Warrior</option>
+                <option value="Dark Knight">Dark Knight</option>
+                <option value="Gunbreaker">Gunbreaker</option>
+                <option value="White Mage">White Mage</option>
+                <option value="Scholar">Scholar</option>
+                <option value="Sage">Sage</option>
+                <option value="Monk">Monk</option>
+                <option value="Dragoon">Dragoon</option>
+                <option value="Ninja">Ninja</option>
+                <option value="Samurai">Samurai</option>
+                <option value="Reaper">Reaper</option>
+                <option value="Bard">Bard</option>
+                <option value="Machinist">Machinist</option>
+                <option value="Dancer">Dancer</option>
+                <option value="Black Mage">Black Mage</option>
+                <option value="Summoner">Summoner</option>
+                <option value="Red Mage">Red Mage</option>
+            </select>
+
+        <br>
+            <label for="createLevel" class="form-label">Enter Job Level:</label>
+            <input type="number" class="form-control" id="createLevel" placeholder="123..."> 
+        <br>
+            <label for="characterId" class="form-label">Enter Character id:</label>
+            <input type="number" class="form-control" id="characterId" placeholder="123..."> 
+        
+        <br>
+        <button type="button" class="btn btn-success" id="createJobButton">Create Job</button> 
+    </form>
+    <script src ="./job.js"></script>
+</body>
+</html>
