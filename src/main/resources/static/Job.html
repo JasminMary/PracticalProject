@@ -61,6 +61,44 @@
         <br>
         <button type="button" class="btn btn-success" id ="readByIdButton">Submit Job id</button> 
     </form>
+    <br>
+    <h2>Update Job:</h2>
+    <form id = "updateJobForm">
+        <label for="updateId" class="form-label">Please enter the id of the job you wish to update:</label>
+        <input type="number" class="form-control" id="updateId" placeholder="123..."> 
+        <br>
+        <label for="jobNameUpdate" class="form-label">Select Job you wish to update:</label>
+        <select name="Job-name" class="form-select" id ="jobNameUpdate" aria-label="Default select example">
+            <option selected>Select job...</option>
+            <option value="Paladin">Paladin</option>
+            <option value="Warrior">Warrior</option>
+            <option value="Dark Knight">Dark Knight</option>
+            <option value="Gunbreaker">Gunbreaker</option>
+            <option value="White Mage">White Mage</option>
+            <option value="Scholar">Scholar</option>
+            <option value="Sage">Sage</option>
+            <option value="Monk">Monk</option>
+            <option value="Dragoon">Dragoon</option>
+            <option value="Ninja">Ninja</option>
+            <option value="Samurai">Samurai</option>
+            <option value="Reaper">Reaper</option>
+            <option value="Bard">Bard</option>
+            <option value="Machinist">Machinist</option>
+            <option value="Dancer">Dancer</option>
+            <option value="Black Mage">Black Mage</option>
+            <option value="Summoner">Summoner</option>
+            <option value="Red Mage">Red Mage</option>
+        </select>
+        <br>
+        <label for="updateLevel" class="form-label">Enter Job Level you wish to update:</label>
+        <input type="number" class="form-control" id="updateLevel" placeholder="123..."> 
+        <br>
+        <label for="characterIdUpdate" class="form-label">Enter Character id you wish to update:</label>
+        <input type="number" class="form-control" id="characterIdUpdate" placeholder="123..."> 
+
+        <br>
+        <button type="button" class="btn btn-success" id="updateJobButton">Update Job</button> 
+    </form>
     <script src ="./job.js"></script>
 </body>
 </html>

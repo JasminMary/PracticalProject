@@ -141,3 +141,32 @@ function showReadBy(id, jobName, jobLevel, characterId) {
 readByIdButton.onclick = () => readBy (
     readId.value
   )
+
+//update job
+function updateJob(jobid, jobName, jobLevel, character) {
+    fetch(`http://localhost:8080/job/update/${jobid}`, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        { jobid: jobid,
+          jobName: jobName,
+          jobLevel: jobLevel,
+          character: {
+              id: character
+          }
+      }),
+  })
+    .then(data => console.log(`Request succeeded with JSON response ${data}`))
+            //.then(location.reload())
+            .catch((error) => console.error(`Request failed: ${error}`))
+}
+
+updateJobButton.onclick = () => updateJob (
+    updateId.value,
+    jobNameUpdate.value,
+    updateLevel.value,
+    characterIdUpdate.value
+)
