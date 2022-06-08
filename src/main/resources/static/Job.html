@@ -13,11 +13,11 @@
     <br>
     <h2>Create a Job</h2>
     <form>
-            <label for="Create-id" class="form-label">Job id:</label>
-            <input type="number" class="form-control" id="Create-id" placeholder="123..."> 
+            <label for="createId" class="form-label">Job id:</label>
+            <input type="number" class="form-control" id="createId" placeholder="123..."> 
         <br>
-            <label for="Job-name" class="form-label">Select Job:</label>
-            <select name="Job-name" class="form-select" aria-label="Default select example">
+            <label for="jobName" class="form-label">Select Job:</label>
+            <select name="Job-name" class="form-select" id ="jobName" aria-label="Default select example">
                 <option selected>Select job...</option>
                 <option value="Paladin">Paladin</option>
                 <option value="Warrior">Warrior</option>
@@ -40,13 +40,15 @@
             </select>
 
         <br>
-            <label for="Create-level" class="form-label">Enter Job Level:</label>
-            <input type="number" class="form-control" id="Create-level" placeholder="123..."> 
+            <label for="createLevel" class="form-label">Enter Job Level:</label>
+            <input type="number" class="form-control" id="createLevel" placeholder="123..."> 
         <br>
-            <label for="Create-character-id" class="form-label">Enter Character id:</label>
-            <input type="number" class="form-control" id="Create-character-id" placeholder="123..."> 
-
-        <br> 
+            <label for="characterId" class="form-label">Enter Character id:</label>
+            <input type="number" class="form-control" id="characterId" placeholder="123..."> 
+        
+        <br>
+        <button type="button" class="btn btn-success" id="createJobButton">Create Job</button> 
     </form>
+    <script src ="./job.js"></script>
 </body>
 </html>

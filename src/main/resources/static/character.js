@@ -1,7 +1,7 @@
 
 // Create Character function
 function createCharacter(id, name, race, grandCompany, freeCompany, datacentre) {
-    
+
     fetch(`http://localhost:8080/character/create`, {
       method: `post`,
       headers: { "Content-type": "application/json" },
@@ -22,3 +22,5 @@ function createCharacter(id, name, race, grandCompany, freeCompany, datacentre) 
       createFreeCompany.value,
       datacentre.value
   );
+
+  
