@@ -25,3 +25,4 @@ function createJob(jobid, jobName, jobLevel, character) {
       createLevel.value,
       characterId.value
   )
+
