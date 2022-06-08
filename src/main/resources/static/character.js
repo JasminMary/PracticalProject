@@ -5,8 +5,12 @@ function createCharacter(id, name, race, grandCompany, freeCompany, datacentre) 
     fetch(`http://localhost:8080/character/create`, {
       method: `post`,
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ id: id, name: name, race: race, grandCompany: grandCompany,
-         freeCompany: freeCompany, datacentre: datacentre }),
+      body: JSON.stringify({ id: id, 
+                            name: name, 
+                            race: race, 
+                            grandCompany: grandCompany,
+                            freeCompany: freeCompany, 
+                            datacentre: datacentre }),
     })
       .then((response) => response.json())
       .then(data => console.log(`Request succeeded with JSON response ${data}`))
@@ -159,4 +163,35 @@ function showReadBy(id, name, race, grandCompany, freeCompany, datacentre) {
 }
 readByIdButton.onclick = () => readBy (
   readId.value
+)
+
+//update character
+function updateCharacter(id, name, race, grandCompany, freeCompany, datacentre) {
+  fetch(`http://localhost:8080/character/update/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+              id: id, 
+              name: name, 
+              race: race, 
+              grandCompany: grandCompany,
+              freeCompany: freeCompany, 
+              datacentre: datacentre
+            })
+          }) 
+            .then(data => console.log(`Request succeeded with JSON response ${data}`))
+            .then(location.reload())
+            .catch((error) => console.error(`Request failed: ${error}`))
+        }
+
+updateCharacterButton.onclick = () => updateCharacter(
+    updateId.value,
+    updateName.value,
+    updateRace.value,
+    grandCompanyUpdate.value,
+    updateFreeCompany.value,
+    updateDatacentre.value
 )
