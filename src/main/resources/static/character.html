@@ -11,8 +11,8 @@
 <body>
     <h1>Final Fantasy XVI Character Page</h1>
     <br>
-    <h2>Create a Character</h2>
-    <form>
+    <h2>Create a Character:</h2>
+    <form id ="createCharForm">
             <label for="createId" class="form-label">Character id:</label>
             <input type="number" class="form-control" id="createId" placeholder="123..."> 
 
@@ -53,12 +53,24 @@
             <option value="Mana">Mana</option> 
             <option value="Chaos">Chaos</option>
             <option value="Light">Light</option>
-            <option value="Aethar">Aethar</option> 
+            <option value="Aethar">Aethar</option>  
             <option value="Primal">Primal</option>
             <option value="Crystal">Crystal</option>
         </select> 
         <br>
         <button type="button" class="btn btn-primary" id ="createCharacterButton">Create Character</button> 
+    </form>
+    <br>
+    <h2>Show all characters:</h2>
+    <button type="button" class="btn btn-primary" id ="showAllCharactersButton">Show all characters</button> 
+    <br>
+    <br>
+    <h2>Read by character id: </h2>
+    <form id = "readByForm">
+        <label for="readId" class="form-label">Enter id:</label>
+        <input type="number" class="form-control" id="readId" placeholder="123..."> 
+        <br>
+        <button type="button" class="btn btn-primary" id ="readByIdButton">Submit character id</button> 
     </form>
         <script src ="./character.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>     </select>

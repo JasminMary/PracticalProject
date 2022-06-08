@@ -32,7 +32,7 @@ public class Job {
 	}
 	
 	public Job() {
-		
+		 
 	}
 
 	public Long getId() {

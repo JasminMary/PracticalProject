@@ -11,7 +11,7 @@
 <body>
     <h1>Final Fantasy XVI Job Page</h1>
     <br>
-    <h2>Create a Job</h2>
+    <h2>Create a Job:</h2>
     <form>
             <label for="createId" class="form-label">Job id:</label>
             <input type="number" class="form-control" id="createId" placeholder="123..."> 
@@ -48,6 +48,18 @@
         
         <br>
         <button type="button" class="btn btn-success" id="createJobButton">Create Job</button> 
+    </form>
+    <br>
+    <h2>Show all jobs:</h2>
+    <button type="button" class="btn btn-success" id="showAllJobButton">Show all jobs</button> 
+    <br>
+    <br>
+    <h2>Read by Job id: </h2>
+    <form id = "readByForm">
+        <label for="readId" class="form-label">Enter id:</label>
+        <input type="number" class="form-control" id="readId" placeholder="123..."> 
+        <br>
+        <button type="button" class="btn btn-success" id ="readByIdButton">Submit Job id</button> 
     </form>
     <script src ="./job.js"></script>
 </body>
