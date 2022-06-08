@@ -29,10 +29,10 @@ let allCharactersTable = document.createElement("table");
 function readAll() {
     let readAllCharacters = fetch(`http://localhost:8080/character/readAll`);
     readAllCharacters.then(function(response) {
-        let CA = response.json();
-        CA.then(function(data){
+        let Chara = response.json();
+        Chara.then(function(data){
           allCharactersTable.innerHTML = ""
-          allCharactersTable.style = "width 60%";
+          allCharactersTable.style = "width 80%";
             document.body.appendChild(allCharactersTable);
 
             for (let i = 0; i < data.length; i++) {
@@ -43,7 +43,8 @@ function readAll() {
     })
     
 }
-
+//if time create the table in html instead 
+//variable names are just acroynms of element type and parameter 
 function showRecord(id, name, race, grandCompany, freeCompany, datacentre) {
   let thid = document.createElement("th")
   let thname = document.createElement("th")
@@ -65,29 +66,29 @@ function showRecord(id, name, race, grandCompany, freeCompany, datacentre) {
   allCharactersTable.appendChild(thfc)
   allCharactersTable.appendChild(thdc)
 
-  let refRow=document.createElement("tr")
+  let trRow=document.createElement("tr")
 
-  let refid = document.createElement("td")
-  let refname=document.createElement("td")
-  let refrace=document.createElement("td")
-  let refgc=document.createElement("td")
-  let reffc=document.createElement("td")
-  let refdc=document.createElement("td")
+  let tdid = document.createElement("td")
+  let tdname=document.createElement("td")
+  let tdrace=document.createElement("td")
+  let tdgc=document.createElement("td")
+  let tdfc=document.createElement("td")
+  let tddc=document.createElement("td")
 
-  refid.innerHTML = id
-  refname.innerHTML = name
-  refrace.innerHTML = race
-  refgc.innerHTML = grandCompany
-  reffc.innerHTML = freeCompany
-  refdc.innerHTML = datacentre
-  refRow.appendChild(refid)
-  refRow.appendChild(refname)
-  refRow.appendChild(refrace)
-  refRow.appendChild(refgc)
-  refRow.appendChild(reffc)
-  refRow.appendChild(refdc)
+  tdid.innerHTML = id
+  tdname.innerHTML = name
+  tdrace.innerHTML = race
+  tdgc.innerHTML = grandCompany
+  tdfc.innerHTML = freeCompany
+  tddc.innerHTML = datacentre
+  trRow.appendChild(tdid)
+  trRow.appendChild(tdname)
+  trRow.appendChild(tdrace)
+  trRow.appendChild(tdgc)
+  trRow.appendChild(tdfc)
+  trRow.appendChild(tddc)
 
-  allCharactersTable.appendChild(refRow)
+  allCharactersTable.appendChild(trRow)
 }  
 
 showAllCharactersButton.onclick = () => readAll()
