@@ -195,3 +195,19 @@ updateCharacterButton.onclick = () => updateCharacter(
     updateFreeCompany.value,
     updateDatacentre.value
 )
+//delete character
+function deletebyID(id) {
+  fetch(`http://localhost:8080/character/delete/${id}`, {
+      method: 'delete'   
+  })
+  .then((data) => {
+      console.log(`Request succeeded with JSON response ${data}`);
+  })
+  .catch((error) => {
+      
+  });
+}
+
+deleteCharaButton.onclick = () => deletebyID (
+  deleteChara.value
+)
