@@ -81,6 +81,7 @@ function showAll(id, jobName, jobLevel, characterId) {
     trRow.appendChild(tdci)
 
     allJobsTable.appendChild(trRow)
+    showAllContainer.appendChild(allJobsTable) 
 
 }
 
@@ -136,6 +137,7 @@ function showReadBy(id, jobName, jobLevel, characterId) {
     trRow.appendChild(tdci)
 
     readJobsByIdTable.appendChild(trRow)
+    readByContainer.appendChild(readJobsByIdTable)
 
 }
 readByIdButton.onclick = () => readBy (

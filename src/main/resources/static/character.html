@@ -9,20 +9,96 @@
     <title>Final Fantasy XVI Character Page</title>
 </head>
 <body>
-    <h1>Final Fantasy XVI Character Page</h1>
+    <header>
+        <h1>Final Fantasy XVI Character Page</h1>
+    </header>
     <br>
-    <h2>Create a Character:</h2>
-    <form id ="createCharForm">
-            <label for="createId" class="form-label">Character id:</label>
-            <input type="number" class="form-control" id="createId" placeholder="123..."> 
+    <div class="container">
+        <h2>Create a Character:</h2>
+        <form id ="createCharForm">
+                <label for="createId" class="form-label">Character id:</label>
+                <input type="number" class="form-control" id="createId" placeholder="123..."> 
 
-        <br>
-            <label for="createName" class="form-label">Character Name:</label>
-            <input type="text" class="form-control" id="createName" placeholder="Enter name..."> 
+            <br>
+                <label for="createName" class="form-label">Character Name:</label>
+                <input type="text" class="form-control" id="createName" placeholder="Enter name..."> 
 
+            <br>
+                <label for="race" class="form-label">Select Character Race:</label>
+                <select name="race" class="form-select" id ="race" aria-label="Default select example">
+                    <option selected>Select character race...</option>
+                    <option value="Hyur">Hyur</option>
+                    <option value="Elezen">Elezen</option>
+                    <option value="Miqo'te">Miqo'te</option>
+                    <option value="Lalafell">Lalafell</option>
+                    <option value="Roegadyn">Roegadyn</option>
+                    <option value="Viera">Viera</option>
+                    <option value="Hrothgar">Hrothgar</option>
+                </select>
+
+            <br>
+                <label for="grand company" class="form-label">Select Grand Company:</label>
+                <select name = "grand company"  id = "grandCompany" class="form-select" aria-label="Default select example">
+                    <option selected>Select grand company...</option>
+                    <option value="The Maelstrom">The Maelstrom</option>
+                    <option value="The Immortal Flames">The Immortal Flames</option>
+                    <option value="The Order of the Twin Adder">The Order of the Twin Adder</option>
+                </select>
+            <br>
+                <label for="Create-free-company" class="form-label">Free company name:</label>
+                <input type="text" class="form-control" id="createFreeCompany" placeholder="Enter free company name..."> 
+            <br>
+            <label for="datacentre" class="form-label">Select Data centre:</label>
+            <select name = "datacentre"  id = "datacentre" class="form-select" aria-label="Default select example">
+                <option selected>Select data centre...</option>
+                <option value="Elemental">Elemental</option>
+                <option value="Gaia">Gaia</option>
+                <option value="Mana">Mana</option> 
+                <option value="Chaos">Chaos</option>
+                <option value="Light">Light</option>
+                <option value="Aethar">Aethar</option>  
+                <option value="Primal">Primal</option>
+                <option value="Crystal">Crystal</option>
+            </select> 
+            <br>
+            <button type="button" class="btn btn-primary" id ="createCharacterButton">Create Character</button> 
+        </form>
         <br>
-            <label for="race" class="form-label">Select Character Race:</label>
-            <select name="race" class="form-select" id ="race" aria-label="Default select example">
+    </div>
+    <br>
+    <div class ="container">
+        <h2>Show All Characters:</h2>
+        <button type="button" class="btn btn-primary" id ="showAllCharactersButton">Show all characters</button> 
+        <br>
+        <br>
+        <div class ="container" id ="showAllContainer"></div>
+        <br>
+    </div>
+    <br>
+    <div class ="container">
+        <h2>Read by Character id: </h2>
+        <form id = "readByForm">
+            <label for="readId" class="form-label">Enter id:</label>
+            <input type="number" class="form-control" id="readId" placeholder="123..."> 
+            <br>
+            <button type="button" class="btn btn-primary" id ="readByIdButton">Submit character id</button> 
+        </form>
+        <br>
+        <div class="container" id ="readByIdContainer"></div>
+        <br>
+    </div>
+    <br>
+    <div class ="container" id ="updateContainer">
+    <h2>Update a Character:</h2>
+        <form id = "updateCharaForm">
+            <label for="updateId" class="form-label">Please enter the id of the character you wish to update:</label>
+            <input type="number" class="form-control" id="updateId" placeholder="123..."> 
+            <br>
+            <label for="updateName" class="form-label">Please enter the Character Name you wish to update:</label>
+            <input type="text" class="form-control" id="updateName" placeholder="Enter name..."> 
+            <br>
+            <label for="updateRace" class="form-label">Select character race you wish to update:</label>
+            <select name="race" class="form-select" id ="updateRace" aria-label="Default select example">
                 <option selected>Select character race...</option>
                 <option value="Hyur">Hyur</option>
                 <option value="Elezen">Elezen</option>
@@ -32,102 +108,52 @@
                 <option value="Viera">Viera</option>
                 <option value="Hrothgar">Hrothgar</option>
             </select>
-
-        <br>
-            <label for="grand company" class="form-label">Select Grand Company:</label>
-            <select name = "grand company"  id = "grandCompany" class="form-select" aria-label="Default select example">
+            <br>
+            <label for="grandCompanyUpdate" class="form-label">Select Grand Company you wish to update:</label>
+            <select name = "grandCompany"  id = "grandCompanyUpdate" class="form-select" aria-label="Default select example">
                 <option selected>Select grand company...</option>
                 <option value="The Maelstrom">The Maelstrom</option>
                 <option value="The Immortal Flames">The Immortal Flames</option>
                 <option value="The Order of the Twin Adder">The Order of the Twin Adder</option>
             </select>
+            <br>
+            <label for="updateFreeCompany" class="form-label">Enter Free company name you wish to update:</label>
+                <input type="text" class="form-control" id="updateFreeCompany" placeholder="Enter free company name..."> 
+            <br>
+            <label for="updateDatacentre" class="form-label">Select Data centre you wish to update:</label>
+            <select name = "datacentre"  id = "updateDatacentre" class="form-select" aria-label="Default select example">
+                <option selected>Select data centre...</option>
+                <option value="Elemental">Elemental</option>
+                <option value="Gaia">Gaia</option>
+                <option value="Mana">Mana</option> 
+                <option value="Chaos">Chaos</option>
+                <option value="Light">Light</option>
+                <option value="Aethar">Aethar</option>  
+                <option value="Primal">Primal</option>
+                <option value="Crystal">Crystal</option>
+            </select> 
+            <br>
+            <button type="button" class="btn btn-primary" id ="updateCharacterButton">Update Character</button> 
+        </form>
         <br>
-            <label for="Create-free-company" class="form-label">Free company name:</label>
-            <input type="text" class="form-control" id="createFreeCompany" placeholder="Enter free company name..."> 
-        <br>
-        <label for="datacentre" class="form-label">Select Data centre:</label>
-        <select name = "datacentre"  id = "datacentre" class="form-select" aria-label="Default select example">
-            <option selected>Select data centre...</option>
-            <option value="Elemental">Elemental</option>
-            <option value="Gaia">Gaia</option>
-            <option value="Mana">Mana</option> 
-            <option value="Chaos">Chaos</option>
-            <option value="Light">Light</option>
-            <option value="Aethar">Aethar</option>  
-            <option value="Primal">Primal</option>
-            <option value="Crystal">Crystal</option>
-        </select> 
-        <br>
-        <button type="button" class="btn btn-primary" id ="createCharacterButton">Create Character</button> 
-    </form>
+    </div>
     <br>
-    <h2>Show all characters:</h2>
-    <button type="button" class="btn btn-primary" id ="showAllCharactersButton">Show all characters</button> 
-    <br>
-    <br>
-    <h2>Read by character id: </h2>
-    <form id = "readByForm">
-        <label for="readId" class="form-label">Enter id:</label>
-        <input type="number" class="form-control" id="readId" placeholder="123..."> 
-        <br>
-        <button type="button" class="btn btn-primary" id ="readByIdButton">Submit character id</button> 
-    </form>
-    <br>
-    <h2>Update a character:</h2>
-    <form id = "updateCharaForm">
-        <label for="updateId" class="form-label">Please enter the id of the character you wish to update:</label>
-        <input type="number" class="form-control" id="updateId" placeholder="123..."> 
-        <br>
-        <label for="updateName" class="form-label">Please enter the Character Name you wish to update:</label>
-        <input type="text" class="form-control" id="updateName" placeholder="Enter name..."> 
-        <br>
-        <label for="updateRace" class="form-label">Select character race you wish to update:</label>
-        <select name="race" class="form-select" id ="updateRace" aria-label="Default select example">
-            <option selected>Select character race...</option>
-            <option value="Hyur">Hyur</option>
-            <option value="Elezen">Elezen</option>
-            <option value="Miqo'te">Miqo'te</option>
-            <option value="Lalafell">Lalafell</option>
-            <option value="Roegadyn">Roegadyn</option>
-            <option value="Viera">Viera</option>
-            <option value="Hrothgar">Hrothgar</option>
-        </select>
-        <br>
-        <label for="grandCompanyUpdate" class="form-label">Select Grand Company you wish to update:</label>
-        <select name = "grandCompany"  id = "grandCompanyUpdate" class="form-select" aria-label="Default select example">
-            <option selected>Select grand company...</option>
-            <option value="The Maelstrom">The Maelstrom</option>
-            <option value="The Immortal Flames">The Immortal Flames</option>
-            <option value="The Order of the Twin Adder">The Order of the Twin Adder</option>
-        </select>
-        <br>
-        <label for="updateFreeCompany" class="form-label">Enter Free company name you wish to update:</label>
-            <input type="text" class="form-control" id="updateFreeCompany" placeholder="Enter free company name..."> 
-        <br>
-        <label for="updateDatacentre" class="form-label">Select Data centre you wish to update:</label>
-        <select name = "datacentre"  id = "updateDatacentre" class="form-select" aria-label="Default select example">
-            <option selected>Select data centre...</option>
-            <option value="Elemental">Elemental</option>
-            <option value="Gaia">Gaia</option>
-            <option value="Mana">Mana</option> 
-            <option value="Chaos">Chaos</option>
-            <option value="Light">Light</option>
-            <option value="Aethar">Aethar</option>  
-            <option value="Primal">Primal</option>
-            <option value="Crystal">Crystal</option>
-        </select> 
-        <br>
-        <button type="button" class="btn btn-primary" id ="updateCharacterButton">Update Character</button> 
-    </form>
-    <br>
+    <div class="container">
     <h2>Delete Character:</h2>
-    <form id = "deleteCharaForm">
-        <label for="deleteChara" class="form-label">Please enter id of the character you wish to delete:</label>
-        <input type="number" class="form-control" id="deleteChara" placeholder="123..."> 
+        <form id = "deleteCharaForm">
+            <label for="deleteChara" class="form-label">Please enter id of the character you wish to delete:</label>
+            <input type="number" class="form-control" id="deleteChara" placeholder="123..."> 
+            <br>
+            <button type="button" class="btn btn-primary" id ="deleteCharaButton">DeleteCharacter</button> 
+            <br>
+        </form>
         <br>
-        <button type="button" class="btn btn-primary" id ="deleteCharaButton">DeleteCharacter</button> 
-    </form>
-        <script src ="./character.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>     </select>
+    </div>
+    <footer>
+        <br>
+        <br>
+    </footer>
+    <script src ="./character.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>     </select>
 </body>
 </html>

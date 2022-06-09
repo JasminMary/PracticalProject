@@ -93,6 +93,7 @@ function showAll(id, name, race, grandCompany, freeCompany, datacentre) {
   trRow.appendChild(tddc)
 
   allCharactersTable.appendChild(trRow)
+  showAllContainer.appendChild(allCharactersTable)
 }  
 
 showAllCharactersButton.onclick = () => readAll()
@@ -159,6 +160,7 @@ function showReadBy(id, name, race, grandCompany, freeCompany, datacentre) {
   trRow.appendChild(tddc)
 
   readCharaByIdTable.appendChild(trRow)
+  readByIdContainer.appendChild(readCharaByIdTable)
 
 }
 readByIdButton.onclick = () => readBy (
