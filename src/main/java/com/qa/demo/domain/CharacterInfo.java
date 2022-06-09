@@ -2,6 +2,7 @@ package com.qa.demo.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -99,14 +100,31 @@ public class CharacterInfo {
 	public List<Job> getJobs() {
 		return jobs;
 	}
-	public void setJobs(List<Job> jobs) {
-		this.jobs = jobs;
-	}
 
 	@Override
 	public String toString() {
 		return "CharacterInfo [id=" + id + ", name=" + name + ", race=" + race + ", grandCompany=" + grandCompany
 				+ ", freeCompany=" + freeCompany + ", datacentre=" + datacentre + ", jobs=" + jobs + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(datacentre, freeCompany, grandCompany, id, jobs, name, race);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CharacterInfo other = (CharacterInfo) obj;
+		return Objects.equals(datacentre, other.datacentre) && Objects.equals(freeCompany, other.freeCompany)
+				&& Objects.equals(grandCompany, other.grandCompany) && Objects.equals(id, other.id)
+				&& Objects.equals(jobs, other.jobs) && Objects.equals(name, other.name)
+				&& Objects.equals(race, other.race);
 	}
 
 

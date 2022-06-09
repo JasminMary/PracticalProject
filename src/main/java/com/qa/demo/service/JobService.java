@@ -37,7 +37,8 @@ public class JobService {
     	existing.setJobName(job.getJobName());
     	existing.setCharacter(job.getCharacter());
     	
-    	return this.repo.saveAndFlush(existing);	
+    	this.repo.saveAndFlush(existing);
+    	return existing;	
     }
     
     //delete
