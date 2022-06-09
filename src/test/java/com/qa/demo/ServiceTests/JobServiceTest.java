@@ -68,15 +68,15 @@ public class JobServiceTest {
 		final Long id = 1L;
 
 		Job oldJob = new Job(id, "Bard", 90, null);
-		Job newJob = new Job(id, "Bard", 90, null);
+		Job newJob = new Job(id, "Sage", 90, null);
 
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(oldJob));
 		Mockito.when(this.repo.save(newJob)).thenReturn(newJob);
 
-		assertEquals(newJob, this.service.updateJob(oldJob.getId(), newJob));
+		assertThat(this.service.updateJob(oldJob.getId(), newJob).equals(newJob));
 
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
-		Mockito.verify(this.repo, Mockito.times(1)).save(newJob);
+		Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(newJob);
 	}
 	
 	@Test

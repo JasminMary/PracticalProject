@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.qa.demo.repo.CharacterInfoRepo;
 import com.qa.demo.service.CharacterInfoService;
@@ -21,6 +22,7 @@ import com.qa.demo.domain.Job;
 import com.qa.demo.exceptions.CharacterInfoException;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 public class CharacterInfoServiceTests {
 	
 	@Autowired
@@ -78,11 +80,13 @@ public class CharacterInfoServiceTests {
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(oldChar));
 		Mockito.when(this.repo.save(newChar)).thenReturn(newChar);
 
-		//assertEquals(this.service.updateCharacterInfo(oldChar.getId(), newChar), newChar);
-		assertThat(this.service.updateCharacterInfo(oldChar.getId(), newChar).equals(newChar));
+		
+		assertThat(this.service.updateCharacterInfo(oldChar.getId(), newChar)).isEqualTo(newChar);
 
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
-		Mockito.verify(this.repo, Mockito.times(1)).save(newChar);
+		Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(newChar);
+
+		
 	}
 	
 	@Test

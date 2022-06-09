@@ -1,5 +1,7 @@
 package com.qa.demo.domain;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
-@Data
+@Data 
 public class Job {
 	
 	@Id
@@ -65,6 +67,24 @@ public class Job {
 
 	public void setCharacter(CharacterInfo character) {
 		this.character = character;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Id, character, jobLevel, jobName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Job other = (Job) obj;
+		return Objects.equals(Id, other.Id) && Objects.equals(character, other.character) && jobLevel == other.jobLevel
+				&& Objects.equals(jobName, other.jobName);
 	}
 	
 
