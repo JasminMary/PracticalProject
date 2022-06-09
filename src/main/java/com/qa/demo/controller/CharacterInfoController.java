@@ -29,6 +29,7 @@ public class CharacterInfoController {
 	public CharacterInfoController(CharacterInfoService service) {
 		this.service = service;
 	}
+	
 	//create 201
 	@PostMapping("/create")
 	public ResponseEntity<CharacterInfo> create(@RequestBody CharacterInfo character) {
