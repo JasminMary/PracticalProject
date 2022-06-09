@@ -170,3 +170,20 @@ updateJobButton.onclick = () => updateJob (
     updateLevel.value,
     characterIdUpdate.value
 )
+
+//delete job
+function deletebyID(id) {
+    fetch(`http://localhost:8080/job/delete/${id}`, {
+        method: 'delete'   
+    })
+    .then((data) => {
+        console.log(`Request succeeded with JSON response ${data}`);
+    })
+    .catch((error) => {
+        
+    });
+  }
+  
+  deleteJobButton.onclick = () => deletebyID (
+    deleteJob.value
+  )
