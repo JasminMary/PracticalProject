@@ -1,0 +1,30 @@
+header {
+    font-family:fantasy;
+    text-align: center;
+    padding-top: 20px;
+    padding: 20px;
+    background-color:cadetblue;
+}
+
+.container {
+    border: 2px;
+    border-style:outset;
+    background-color: white;
+}
+
+h1 {
+    color:aliceblue;
+}
+
+h2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family:sans-serif;
+}
+body {
+    background-image: url("./TD4oP2.webp") ;
+}
+
+button {
+    padding: 10px;
+}
