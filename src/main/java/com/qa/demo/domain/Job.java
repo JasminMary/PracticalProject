@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
-@Data 
+//@Data 
 public class Job {
 	
 	@Id

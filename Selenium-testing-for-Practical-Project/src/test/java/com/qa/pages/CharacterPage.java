@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CharacterPage {
 	
-	private static final String URL = "http://127.0.0.1:5500/character.html";
+	private static final String URL = "http://localhost:8080/character.html";
 	private WebDriver driver;
 	
 	public static String getUrl() {
