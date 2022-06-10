@@ -81,7 +81,7 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<mainClass>com.qa.main.Runner</mainClass>
+									<mainClass>com.qa.demo.PracticalProjectApplication</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
